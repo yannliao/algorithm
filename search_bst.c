@@ -123,7 +123,7 @@ int main (void)
   i = BSTPrint(t);
   assert(i == 1);
 
-  printf("\n\%\%\%\%\%\%\%\n");
+  printf("\n******************\n");
   DeleteBST(t, 6);
   i = BSTPrint(t); 
 }
