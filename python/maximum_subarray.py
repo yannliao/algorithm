@@ -3,12 +3,15 @@
   CLRS Chapter 4.1
 """
 def max_crossing_subarray(A, low, mid, high):
+  """
+  Finding 
+  """
   left_sum = A[mid]
   left_max = mid
   sum = 0
   for i in range(mid, low-1, -1):
     sum += A[i]
-    if sum > left_sum:
+    if sum >= left_sum:
       left_sum = sum
       left_max = i
   right_sum = A[mid]
@@ -16,10 +19,10 @@ def max_crossing_subarray(A, low, mid, high):
   sum = 0
   for j in range(mid, high+1):
     sum += A[j]
-    if sum > right_sum:
+    if sum >= right_sum:
       right_sum = sum
       right_max = j
-  return (left_max, right_max, left_sum+right_sum)
+  return (left_max, right_max, left_sum+right_sum-A[mid])
 
 def max_subarray(A, low, high):
   if low == high:
