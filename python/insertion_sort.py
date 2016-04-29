@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
   Insertion Sort
   CLRS Chapter 2.1
@@ -6,7 +7,7 @@
 def sort(sequence):
     """
     Sorting a list of numbers.
-    
+
     Param: sequence: A sequence of n numbers.
     Return: sequence: A permutation(reordering) sequence of the input sequence.
     """

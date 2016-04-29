@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
   Merge Sort
   CLRS Chapter 2.3
@@ -37,4 +38,4 @@ def merge_sort(array):
     L = merge_sort(array[:mid])
     R = merge_sort(array[mid:])
     result = merge(L, R)
-    return result 
+    return result

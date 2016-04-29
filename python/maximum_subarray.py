@@ -1,10 +1,11 @@
+# -*- coding: utf-8 -*-
 """
   Solve the maximum-subarray problem using divide-and-conquer technique.
   CLRS Chapter 4.1
 """
 def max_crossing_subarray(A, low, mid, high):
   """
-  Finding 
+  Finding
   """
   left_sum = A[mid]
   left_max = mid
