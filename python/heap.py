@@ -1,8 +1,9 @@
+# -*- coding: utf-8 -*-
 """
   Heap Sort
   CLRS Chapter 6
 """
-# -*- coding: utf-8 -*-
+
 def max_heapify(A, heap_size, i):
   """
   lets the value A[i] "float down" in the max-heap, so that the subtree at index i obeys the max-heap property.
