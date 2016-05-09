@@ -1,4 +1,4 @@
-#some algorithms
+#Some algorithms
 
 # Chapter 2
 ## Loop invariant:
