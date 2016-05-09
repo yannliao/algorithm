@@ -1,3 +1,4 @@
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 #Some algorithms
 
 # Chapter 2
@@ -26,4 +27,4 @@ Divide the complicate problem to many small and fimilar problems, sovle subprobl
 * Conquer: solve subproblems recursively , mostly useing same method. If the subproblem is small enough then solve it directly. 
 * Combine: combine the reuslt of subproblems to get the result of the original one.
 
-<img src="http://chart.googleapis.com/chart?cht=tx&chl=\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" style="border:none;">
+$$x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$
