@@ -4,6 +4,7 @@
   CLRS Chapter 2.3
 """
 
+
 def merge(L, R):
     """
     Merge two sorted subsequences into one sorted tree

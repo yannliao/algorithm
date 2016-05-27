@@ -4,6 +4,7 @@
   CLRS Chapter 2.1
 """
 
+
 def sort(sequence):
     """
     Sorting a list of numbers.
