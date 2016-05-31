@@ -6,8 +6,7 @@
 import context
 from python.count_sort import counting_sort
 
-array = [1, 4, 2, 5, 0, 10, 7, 2]
-bucket = []
+array = [2, 5, 3, 0, 2, 3, 0, 3]
 print("the orginal array: ", array)
-counting_sort(array, bucket, 11)
-print("after: ", bucket)
+bucket = counting_sort(array,  6)
+print("after: ", list(bucket.values()))
