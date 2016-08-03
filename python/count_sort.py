@@ -5,24 +5,26 @@
 """
 
 
-def counting_sort(array, k):
+def counting_sort(sequence, k):
     """
       Sorting array in theta n time
     """
     count = [0 for i in range(0, k)]
-    bucket = {}
-    # for i in range(0, k):
-    #     C[i] = 0
+    bucket = [] * len(sequence)
 
-    for j in range(0, len(array)):
-        count[array[j]] += 1
-    # print('count: {0}'.format(count))
+    for ele in sequence:
+        count[ele] += 1
+
     for i in range(1, k):
-        count[i] = count[i] + count[i - 1]
-    # print('count1: {0}'.format(count))
-    for j in range(len(array) - 1, -1, -1):
-        # bucket[count[array[j]]] = array[j]
-        bucket[count[array[j]]] = array[j]
-        # print('bucket is {0}'.format(bucket))
-        count[array[j]] -= 1
+        count[i] += count[i - 1]
+
+    for j in range(len(sequence) - 1, -1, -1):
+        item = sequence[j]
+        bucket[count[item] - 1] = sequence[j]
+        count[item] -= 1
     return bucket
+
+
+def radix_sort(A, d):
+    for i in range(d):
+        counting_sort(A, 11)
