@@ -9,7 +9,10 @@
             "type": "go",
             "request": "launch",
             "mode": "test",
-            "program": "./intro_6006"
+            "program": "./sorting_6006",
+            "args": [
+                "-test.v"
+            ]
         }
     ]
 }
