@@ -1,6 +1,5 @@
-//Package sorting_6006 implements sorting algorithms in sort & trees section of MIT 6.006.
-
-package sorting_6006
+//Package sorting6006 implements sorting algorithms in sort & trees section of MIT 6.006.
+package sorting6006
 
 //InsertSort algorithm
 func InsertSort(s *[]int) {

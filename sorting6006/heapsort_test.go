@@ -1,8 +1,8 @@
-package sorting_6006
+package sorting6006
 
 import "testing"
 
-func TestMergeSort(t *testing.T) {
+func TestHeapSort(t *testing.T) {
 	var tests = []struct {
 		input []int
 		want  []int
@@ -16,10 +16,6 @@ func TestMergeSort(t *testing.T) {
 			want:  []int{1, 2, 3, 4, 5, 6, 7},
 		},
 		{
-			input: []int{2, 2},
-			want:  []int{2, 2},
-		},
-		{
 			input: []int{3},
 			want:  []int{3},
 		},
@@ -29,8 +25,9 @@ func TestMergeSort(t *testing.T) {
 		},
 	}
 	for _, test := range tests {
-		if got := MergeSort(test.input); !equal(got, test.want) {
-			t.Errorf("MergeSort(%v)= %v", test.input, got)
+		t.Logf("HeapSort, sorting %v", test.input)
+		if HeapSort(&test.input); !equal(test.input, test.want) {
+			t.Errorf("HeapSort Fail result = %v", test.input)
 		}
 	}
 }

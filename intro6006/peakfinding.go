@@ -1,7 +1,7 @@
-//Package intro_6006 implements PeakFinding and PeakFinding2D in introduction section of MIT 6.006.
+//Package intro6006 implements PeakFinding and PeakFinding2D in introduction section of MIT 6.006.
+package intro6006
 
-package intro_6006
-
+//PeakFinding algorithm
 func PeakFinding(s []int, low int, high int) int {
 	mid := (low + high) / 2
 	if mid > 0 && s[mid] < s[mid-1] {

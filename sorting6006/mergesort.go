@@ -1,4 +1,4 @@
-package sorting_6006
+package sorting6006
 
 //MergeSort algorithm
 func MergeSort(s []int) []int {

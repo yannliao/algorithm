@@ -1,4 +1,4 @@
-package intro_6006
+package intro6006
 
 import "testing"
 

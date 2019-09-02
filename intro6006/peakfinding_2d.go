@@ -1,5 +1,6 @@
-package intro_6006
+package intro6006
 
+//PeakFinding2D algorithm
 func PeakFinding2D(s [][]int, low int, high int) (int, int) {
 	mid := (low + high) / 2
 	max := findMax(s[mid])
