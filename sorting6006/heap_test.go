@@ -30,22 +30,33 @@ func TestExtractMax(t *testing.T) {
 	}{
 		{
 			input: []int{8, 2, 4, 9, 3, 6},
-			want:  []int{8, 4, 6, 2, 3},
+			want:  []int{2, 3, 4, 6, 8, 9},
+		},
+		{
+			input: []int{3, 5, 1, 2, 4, 7, 6},
+			want:  []int{1, 2, 3, 4, 5, 6, 7},
+		},
+		{
+			input: []int{3},
+			want:  []int{3},
+		},
+		{
+			input: []int{},
+			want:  []int{},
 		},
 	}
 	for _, test := range tests {
-		t.Logf("Test Heap ExtractMax %v", test.input)
 		var h MaxHeap
+
 		for _, v := range test.input {
 			h.Insert(v)
 		}
-		got := h.ExtractMax()
-		if got != 9 {
-			t.Errorf("Test Heap ExtractMax Fail got = %v, want = %v", got, 9)
+		got := h
+		for len(h) > 0 {
+			h.ExtractMax()
 		}
-		if !equal(h, test.want) {
-			t.Errorf("Test Heap ExtractMax Fail result = %v, want = %v", h, test.want)
+		if !equal(got, test.want) {
+			t.Errorf("Test Heap ExtractMax Fail result = %v, want = %v", got, test.want)
 		}
 	}
-
 }

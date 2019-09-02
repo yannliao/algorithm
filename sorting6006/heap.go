@@ -46,7 +46,7 @@ func (p *MaxHeap) Insert(k int) {
 func (p *MaxHeap) ExtractMax() int {
 	l := len(*p)
 	v := (*p)[0]
-	(*p)[0] = (*p)[l-1]
+	(*p)[0], (*p)[l-1] = (*p)[l-1], (*p)[0]
 	*p = (*p)[:l-1]
 	p.maxheapify(0)
 	return v
