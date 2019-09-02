@@ -1,15 +1,5 @@
 package sorting6006
 
-func parent(i int) int {
-	return (i - 1) / 2
-}
-func left(i int) int {
-	return 2*i + 1
-}
-func right(i int) int {
-	return 2 * (i + 1)
-}
-
 func maxheapify(p *[]int, size int, i int) {
 	s := *p
 	l := left(i)
@@ -31,7 +21,7 @@ func buidmaxheap(p *[]int) {
 	s := *p
 	size := len(s)
 	i := len(s)/2 - 1
-	for i > -1 {
+	for i >= 0 {
 		maxheapify(p, size, i)
 		i--
 	}
