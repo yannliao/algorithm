@@ -1,5 +1,6 @@
 package sorting_6006
 
+//MergeSort algorithm
 func MergeSort(s []int) []int {
 	if len(s) <= 1 {
 		return s
@@ -10,6 +11,8 @@ func MergeSort(s []int) []int {
 	re := merge(MergeSort(left), MergeSort(right))
 	return re
 }
+
+//merge two sorted array
 func merge(a []int, b []int) []int {
 	i := 0
 	j := 0
