@@ -59,14 +59,20 @@ func (n *Node) delete() {
 	if n.parent == nil {
 		return
 	}
-	if n.left == nil {
+	if n.left == nil && n.right == nil {
+		if n == n.parent.right {
+			n.parent.right = nil
+		} else {
+			n.parent.left = nil
+		}
+	} else if n.left == nil && n.right != nil {
 		n.right.parent = n.parent
 		if n == n.parent.right {
 			n.parent.right = n.right
 		} else {
 			n.parent.left = n.right
 		}
-	} else if n.right == nil {
+	} else if n.left != nil && n.right == nil {
 		n.left.parent = n.parent
 		if n == n.parent.right {
 			n.parent.right = n.left
@@ -75,18 +81,19 @@ func (n *Node) delete() {
 		}
 	} else {
 		next := n.successor()
+		n.Key, next.Key = next.Key, n.Key
 		next.delete()
 
-		if n == n.parent.right {
-			n.parent.right = next
-		} else {
-			n.parent.left = next
-		}
-		next.parent = n.parent
-		next.left = n.left
-		next.left.parent = next
-		next.right = n.right
-		next.right.parent = next
+		// if n == n.parent.right {
+		// 	n.parent.right = next
+		// } else {
+		// 	n.parent.left = next
+		// }
+		// next.parent = n.parent
+		// next.left = n.left
+		// next.left.parent = next
+		// next.right = n.right
+		// next.right.parent = next
 	}
 }
 
