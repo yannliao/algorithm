@@ -2,26 +2,26 @@ package trees6006
 
 import "fmt"
 
-//Node cant be nil
-type Node struct {
+//BSTNode cant be nil
+type BSTNode struct {
 	Key                 int
-	parent, left, right *Node
+	parent, left, right *BSTNode
 }
 
-func (n *Node) min() *Node {
+func (n *BSTNode) min() *BSTNode {
 	for n.left != nil {
 		n = n.left
 	}
 	return n
 }
 
-func (n *Node) max() *Node {
+func (n *BSTNode) max() *BSTNode {
 	for n.right != nil {
 		n = n.right
 	}
 	return n
 }
-func (n *Node) find(k int) *Node {
+func (n *BSTNode) find(k int) *BSTNode {
 	for n != nil && k != n.Key {
 		if k < n.Key {
 			n = n.left
@@ -32,9 +32,9 @@ func (n *Node) find(k int) *Node {
 	return n
 }
 
-func (n *Node) insert(m *Node) error {
+func (n *BSTNode) insert(m *BSTNode) error {
 	if m == nil {
-		return fmt.Errorf("Insert an empty node")
+		return fmt.Errorf("Insert an empty BSTnode")
 	}
 
 	if m.Key < n.Key {
@@ -55,7 +55,7 @@ func (n *Node) insert(m *Node) error {
 	return nil
 }
 
-func (n *Node) delete() {
+func (n *BSTNode) delete() {
 	if n.parent == nil {
 		return
 	}
@@ -97,8 +97,8 @@ func (n *Node) delete() {
 	}
 }
 
-//successor get the node with the next larger key
-func (n *Node) successor() *Node {
+//successor get the BSTnode with the next larger key
+func (n *BSTNode) successor() *BSTNode {
 	if n.right != nil {
 		return n.right.min()
 	}
@@ -108,8 +108,35 @@ func (n *Node) successor() *Node {
 	return n
 }
 
-//predecessor get the node with the next smaller key
-func (n *Node) predecessor() *Node {
+func (n *BSTNode) checkri() bool {
+	l, r := true, true
+	if n.left != nil {
+		if n.left.Key > n.Key {
+			fmt.Printf("BST RI violated by a left node key. left: %v node: %v\n", n.left.Key, n.Key)
+			return false
+		}
+		if n.left.parent != n {
+			fmt.Printf("BST RI violated by a left node parent pointer. node %v.\n", n.Key)
+			return false
+		}
+		l = n.left.checkri()
+	}
+	if n.right != nil {
+		if n.right.Key < n.Key {
+			fmt.Printf("BST RI violated by a right node key.right: %v, node： %v\n", n.right.Key, n.Key)
+			return false
+		}
+		if n.right.parent != n {
+			fmt.Printf("BST RI violated by a right node parent pointer.node: %v\n", n.Key)
+			return false
+		}
+		r = n.right.checkri()
+	}
+	return l && r
+}
+
+//predecessor get the BSTnode with the next smaller key
+func (n *BSTNode) predecessor() *BSTNode {
 	if n.left != nil {
 		return n.left.max()
 	}
@@ -122,7 +149,17 @@ func (n *Node) predecessor() *Node {
 // An BSTree is a binary search tree of integers.
 // A nil *BSTree represents the empty tree.
 type BSTree struct {
-	root *Node
+	root *BSTNode
+}
+
+func (t *BSTree) checkri() bool {
+	if t.root != nil {
+		if t.root.parent != nil {
+			fmt.Printf("BST RI violated by the root node's parent pointer.\n")
+		}
+		return t.root.checkri()
+	}
+	return true
 }
 
 //Min find the minimum key in the binary search tree
@@ -143,8 +180,8 @@ func (t *BSTree) Max() (int, error) {
 	return k, nil
 }
 
-//Find the tree node of value k
-func (t *BSTree) Find(k int) (*Node, error) {
+//Find the tree BSTnode of value k
+func (t *BSTree) Find(k int) (*BSTNode, error) {
 	if t.root == nil {
 		return nil, fmt.Errorf("Find() called on empty tree")
 	}
@@ -153,10 +190,10 @@ func (t *BSTree) Find(k int) (*Node, error) {
 	return n, nil
 }
 
-//Insert an node to the binary search tree
-func (t *BSTree) Insert(n *Node) error {
+//Insert an BSTnode to the binary search tree
+func (t *BSTree) Insert(n *BSTNode) error {
 	if n == nil {
-		return fmt.Errorf("Insert an empty node")
+		return fmt.Errorf("Insert an empty BSTnode")
 	}
 
 	if t.root == nil {
@@ -168,14 +205,14 @@ func (t *BSTree) Insert(n *Node) error {
 	return c.insert(n)
 }
 
-//Delete an node from the bst
+//Delete an BSTnode from the bst
 func (t *BSTree) Delete(k int) error {
 	if t.root == nil {
 		return fmt.Errorf("Delete() called on empty tree")
 	}
 	n := t.root.find(k)
 	if n == nil {
-		return fmt.Errorf("cant Delete an nil node")
+		return fmt.Errorf("cant Delete an nil BSTnode")
 	}
 	if n == t.root {
 		t.root = nil
